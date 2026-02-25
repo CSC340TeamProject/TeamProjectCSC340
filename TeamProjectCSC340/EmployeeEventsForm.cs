@@ -18,7 +18,23 @@ namespace TeamProjectCSC340
         public EmployeeEventsForm()
         {
             InitializeComponent();
-            eventsList = Events.getEvents(employeeId);
-        }
+            //gets the employee's events and adds them to the eventsList
+            eventsList = EmployeeEvents.getEvents(this.employeeId);
+
+            //check if the list is empty
+            if(eventsList.Count == 0)
+            {
+                //display an error
+                MessageBox.Show("You do not have any events to edit.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close(); //close this form
+                return;
+            }
+
+            //add each event to the list box for the employee to choose from
+            foreach (EmployeeEvents events in eventsList)
+            {
+                eventsListBox.Items.Add($"Event {events.title}");
+            }
+        }     
     }
 }
