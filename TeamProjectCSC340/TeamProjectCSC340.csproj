@@ -95,12 +95,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="events.cs" />
-    <Compile Include="eventsForm.cs">
+    <Compile Include="EmployeeEvents.cs" />
+    <Compile Include="EmployeeEventsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="eventsForm.Designer.cs">
-      <DependentUpon>eventsForm.cs</DependentUpon>
+    <Compile Include="EmployeeEventsForm.Designer.cs">
+      <DependentUpon>EmployeeEventsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -110,6 +110,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EmployeeEventsForm.resx">
+      <DependentUpon>EmployeeEventsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

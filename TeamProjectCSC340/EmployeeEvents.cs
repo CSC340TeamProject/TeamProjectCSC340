@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TeamProjectCSC340
 {
-    public class events
+    public class EmployeeEvents
     {
         //attributes of an event
         public string title; //holds the title of the meeting
@@ -20,10 +20,10 @@ namespace TeamProjectCSC340
         public int employeeId; //foreign key to access all of the employee's events
 
         //function to display the employee's events
-        public static List<events> getEvents(int employeeId)
+        public static List<EmployeeEvents> getEvents(int employeeId)
         {
             //initalize an empty list of events
-            List<events> events = new List<events>();
+            List<EmployeeEvents> events = new List<EmployeeEvents>();
 
             //connect to the database
             string connStr =
@@ -41,7 +41,7 @@ namespace TeamProjectCSC340
                 while (myReader.Read())
                 {
                     //add the events to the events list
-                    events.Add(new events
+                    events.Add(new EmployeeEvents
                     {
                         employeeId = myReader.GetInt32("employeeId"),
                         title = myReader.GetString("title"),
