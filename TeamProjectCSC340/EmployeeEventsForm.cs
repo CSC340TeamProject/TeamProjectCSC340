@@ -21,6 +21,8 @@ namespace TeamProjectCSC340
             //gets the employee's events and adds them to the eventsList
             eventsList = EmployeeEvents.getEvents(this.employeeId);
 
+            Console.WriteLine(eventsList);
+
             //check if the list is empty
             if(eventsList.Count == 0)
             {
