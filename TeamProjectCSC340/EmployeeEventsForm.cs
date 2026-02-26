@@ -19,7 +19,7 @@ namespace TeamProjectCSC340
         {
             InitializeComponent();
             //gets the employee's events and adds them to the eventsList
-            eventsList = EmployeeEvents.getEvents(this.employeeId);
+            eventsList = EmployeeEvents.getEvents(1);
 
             Console.WriteLine(eventsList);
 
@@ -35,7 +35,7 @@ namespace TeamProjectCSC340
             //add each event to the list box for the employee to choose from
             foreach (EmployeeEvents events in eventsList)
             {
-                eventsListBox.Items.Add($"Event {events.title}");
+                eventsListBox.Items.Add($"Event - {events.title}");
             }
         }     
     }

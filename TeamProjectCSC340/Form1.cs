@@ -22,7 +22,6 @@ namespace TeamProjectCSC340
             //open events 
             EmployeeEventsForm employeeEventForm = new EmployeeEventsForm();
             employeeEventForm.Show();
-            this.Close();
         }
 
 
