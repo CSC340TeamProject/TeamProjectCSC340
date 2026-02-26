@@ -20,10 +20,17 @@ namespace TeamProjectCSC340
         private void button1_Click(object sender, EventArgs e)
         {
             //open events 
-            EmployeeEventsForm employeeEventForm = new EmployeeEventsForm();
+            EmployeeEventsForm employeeEventForm = new EmployeeEventsForm("edit");
             employeeEventForm.Show();
+            this.Hide();
         }
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //open events 
+            EmployeeEventsForm employeeEventForm = new EmployeeEventsForm("delete");
+            employeeEventForm.Show();
+            this.Hide();
+        }
     }
 }

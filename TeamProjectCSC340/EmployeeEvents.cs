@@ -63,5 +63,11 @@ namespace TeamProjectCSC340
             //return the list of events
             return events;
         }
+
+
+        public override string ToString()
+        {
+            return $"Event - {title}";
+        }
     }
 }
