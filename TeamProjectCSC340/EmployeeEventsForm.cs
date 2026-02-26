@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Mysqlx;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +16,7 @@ namespace TeamProjectCSC340
     {
         public int employeeId; //holds employee's id
         public List<EmployeeEvents> eventsList; //holds events
+        public string eventAction; //holds the action the employee wants to do
 
         public EmployeeEventsForm()
         {
@@ -37,6 +40,20 @@ namespace TeamProjectCSC340
             {
                 eventsListBox.Items.Add($"Event - {events.title}");
             }
-        }     
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(eventsListBox.SelectedItem != null)
+            {
+                string selectedEventListBox = (string)eventsListBox.SelectedItem;
+                EmployeeEvents selectedEvent = eventsList.Find(a => a.eventId = selectedEventListBox);
+            }
+            else
+            {
+                //display an error
+                MessageBox.Show("Please select an event before contining.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

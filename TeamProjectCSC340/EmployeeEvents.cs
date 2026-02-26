@@ -18,6 +18,7 @@ namespace TeamProjectCSC340
         public TimeSpan endTime { get; set; } //holds the end time of the meeting
         public TimeSpan duration => endTime - startTime; //holds the duration of the meeting 
         public int employeeId; //foreign key to access all of the employee's events
+        public int eventId;
 
         //function to display the employee's events
         public static List<EmployeeEvents> getEvents(int employeeId)
@@ -47,7 +48,8 @@ namespace TeamProjectCSC340
                         title = myReader.GetString("title"),
                         date = myReader.GetDateTime("date"),
                         startTime = myReader.GetTimeSpan("startTime"),
-                        endTime = myReader.GetTimeSpan("endTime")
+                        endTime = myReader.GetTimeSpan("endTime"),
+                        eventId = myReader.GetInt32("eventId")
                     });
                 }
             }
