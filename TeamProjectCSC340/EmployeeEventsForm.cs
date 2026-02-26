@@ -36,24 +36,27 @@ namespace TeamProjectCSC340
             }
 
             //add each event to the list box for the employee to choose from
-            foreach (EmployeeEvents events in eventsList)
-            {
-                eventsListBox.Items.Add($"Event - {events.title}");
-            }
+            eventsListBox.DataSource = eventsList;
+            eventsListBox.ClearSelected(); //unselected index 0 after datasource
+            eventsListBox.DisplayMember = "title";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(eventsListBox.SelectedItem != null)
+            if (eventsListBox.SelectedItem != null)
             {
-                string selectedEventListBox = (string)eventsListBox.SelectedItem;
-                EmployeeEvents selectedEvent = eventsList.Find(a => a.eventId = selectedEventListBox);
+                //get the selected event
+                EmployeeEvents selectedEvent = (EmployeeEvents)eventsListBox.SelectedItem;
+
+                //open editEventForm
+                editEventForm edit = new editEventForm(selectedEvent.eventId);
             }
             else
             {
                 //display an error
                 MessageBox.Show("Please select an event before contining.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
     }
 }
