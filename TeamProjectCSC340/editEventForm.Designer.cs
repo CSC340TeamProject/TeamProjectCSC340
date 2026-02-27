@@ -33,10 +33,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.newDate = new System.Windows.Forms.DateTimePicker();
             this.nextButton1 = new System.Windows.Forms.Button();
             this.newStartTime = new System.Windows.Forms.DateTimePicker();
             this.newEndTime = new System.Windows.Forms.DateTimePicker();
+=======
+            this.newStartTimeTextBox = new System.Windows.Forms.TextBox();
+            this.newEndTimeTextBox = new System.Windows.Forms.TextBox();
+            this.newDate = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
             this.SuspendLayout();
             // 
             // enterTitleLabel
@@ -87,17 +94,40 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Enter New Date:";
             // 
+<<<<<<< HEAD
+=======
+            // newStartTimeTextBox
+            // 
+            this.newStartTimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newStartTimeTextBox.Location = new System.Drawing.Point(340, 160);
+            this.newStartTimeTextBox.Name = "newStartTimeTextBox";
+            this.newStartTimeTextBox.Size = new System.Drawing.Size(303, 26);
+            this.newStartTimeTextBox.TabIndex = 5;
+            // 
+            // newEndTimeTextBox
+            // 
+            this.newEndTimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newEndTimeTextBox.Location = new System.Drawing.Point(340, 239);
+            this.newEndTimeTextBox.Name = "newEndTimeTextBox";
+            this.newEndTimeTextBox.Size = new System.Drawing.Size(303, 26);
+            this.newEndTimeTextBox.TabIndex = 6;
+            // 
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
             // newDate
             // 
             this.newDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newDate.Location = new System.Drawing.Point(340, 324);
+<<<<<<< HEAD
             this.newDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.newDate.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+=======
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
             this.newDate.Name = "newDate";
             this.newDate.Size = new System.Drawing.Size(303, 26);
             this.newDate.TabIndex = 8;
             this.newDate.Value = new System.DateTime(2026, 2, 27, 9, 50, 14, 0);
             // 
+<<<<<<< HEAD
             // nextButton1
             // 
             this.nextButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -127,6 +157,18 @@
             this.newEndTime.Size = new System.Drawing.Size(303, 26);
             this.newEndTime.TabIndex = 11;
             this.newEndTime.Value = new System.DateTime(2026, 2, 27, 10, 23, 0, 0);
+=======
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(245, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(299, 48);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Confirm Changes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
             // 
             // editEventForm
             // 
@@ -134,10 +176,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+<<<<<<< HEAD
             this.Controls.Add(this.newEndTime);
             this.Controls.Add(this.newStartTime);
             this.Controls.Add(this.nextButton1);
             this.Controls.Add(this.newDate);
+=======
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.newDate);
+            this.Controls.Add(this.newEndTimeTextBox);
+            this.Controls.Add(this.newStartTimeTextBox);
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -157,9 +206,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+<<<<<<< HEAD
         private System.Windows.Forms.DateTimePicker newDate;
         private System.Windows.Forms.Button nextButton1;
         private System.Windows.Forms.DateTimePicker newStartTime;
         private System.Windows.Forms.DateTimePicker newEndTime;
+=======
+        private System.Windows.Forms.TextBox newStartTimeTextBox;
+        private System.Windows.Forms.TextBox newEndTimeTextBox;
+        private System.Windows.Forms.DateTimePicker newDate;
+        private System.Windows.Forms.Button button1;
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
     }
 }

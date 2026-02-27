@@ -20,6 +20,7 @@ namespace TeamProjectCSC340
             this.thisEvent = thisEvent;
         }
 
+<<<<<<< HEAD
 
         private void nextButton1_Click(object sender, EventArgs e)
         {
@@ -54,6 +55,11 @@ namespace TeamProjectCSC340
             }
 
             return true;
+=======
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
         }
     }
 }

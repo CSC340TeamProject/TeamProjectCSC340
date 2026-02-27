@@ -50,6 +50,7 @@ namespace TeamProjectCSC340
                 //get the selected event
                 EmployeeEvents selectedEvent = (EmployeeEvents)eventsListBox.SelectedItem;
 
+<<<<<<< HEAD
                 //open a form corresponding to the action the employee wants to complete
                 if(action == "edit")
                 {
@@ -81,6 +82,10 @@ namespace TeamProjectCSC340
                     }
 
                 }//do the same as above for the other menu options 
+=======
+                //open editEventForm
+                editEventForm edit = new editEventForm(selectedEvent.eventId);
+>>>>>>> 9fb57ffff4d460568696681e5504f66d6dfca2c0
             }
             else
             {
