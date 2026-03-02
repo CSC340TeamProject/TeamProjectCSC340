@@ -23,6 +23,12 @@ namespace TeamProjectCSC340
 
         private void nextButton1_Click(object sender, EventArgs e)
         {
+            if (newEndTime.Value <= newStartTime.Value)
+            {
+                MessageBox.Show("End time must be after start time.");
+                return;
+            }
+
             if (!isAllInfoEntered())
             {
                 MessageBox.Show("Please enter all new information for the event.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,16 +49,7 @@ namespace TeamProjectCSC340
         public bool isAllInfoEntered()
         {
             if (string.IsNullOrWhiteSpace(newTitleTextBox.Text))
-            {
                 return false;
-            }
-
-            if (newEndTime.Value <= newStartTime.Value)
-            {
-                MessageBox.Show("End time must be after start time.");
-                return false;
-            }
-
             return true;
         }
     }
