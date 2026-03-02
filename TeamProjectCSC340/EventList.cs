@@ -30,6 +30,7 @@ namespace TeamProjectCSC340
         private void ConferenceList_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedEvent2 = (string)ConferenceList.SelectedItem;
+
             if (selectedEvent2 == "Tuesday Conference")
             {
                 MessageBox.Show("Team Conference Tuesday. Atendence not required but highly recomended you come.\nDate: March 3rd\nTime: 11:00AM\nLocation: Meeting Room 3A");
@@ -39,6 +40,7 @@ namespace TeamProjectCSC340
         private void MixerList_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedEvent3 = (string)MixerList.SelectedItem;
+
             if (selectedEvent3 == "Wednesday Mixer")
             {
                 MessageBox.Show("Anual Company Mixer, Enjoy complemetary refreshments, Mingle with both clients and co workers.\nDate: March 4th\nTime: 6:00PM\nLocation: Event Hall");
@@ -48,9 +50,10 @@ namespace TeamProjectCSC340
         private void SeminarList_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedEvent4 = (string)SeminarList.SelectedItem;
+
             if (selectedEvent4 == "Monday Seminar" || selectedEvent4 == "(Delayed)")
             {
-                MessageBox.Show("The Monday Seminar has Been moved to next Monday, March 9th\nTime: 6:00PM\nLocation: Event Hall");
+                MessageBox.Show("The Monday Seminar has Been moved to next Monday, March 9th\nDate: March 9th\nTime: 3:00PM\nLocation: Event Hall");
             }
         }
     }

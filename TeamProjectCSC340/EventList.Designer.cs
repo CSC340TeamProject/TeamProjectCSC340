@@ -35,6 +35,8 @@
             this.ConferenceList = new System.Windows.Forms.ListBox();
             this.MixerList = new System.Windows.Forms.ListBox();
             this.SeminarList = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -57,7 +59,7 @@
             this.MeetingList.ItemHeight = 38;
             this.MeetingList.Items.AddRange(new object[] {
             "Friday Meeting"});
-            this.MeetingList.Location = new System.Drawing.Point(12, 12);
+            this.MeetingList.Location = new System.Drawing.Point(53, 115);
             this.MeetingList.Name = "MeetingList";
             this.MeetingList.Size = new System.Drawing.Size(333, 118);
             this.MeetingList.TabIndex = 3;
@@ -71,7 +73,7 @@
             this.ConferenceList.ItemHeight = 38;
             this.ConferenceList.Items.AddRange(new object[] {
             "Tuesday Conference"});
-            this.ConferenceList.Location = new System.Drawing.Point(351, 12);
+            this.ConferenceList.Location = new System.Drawing.Point(392, 115);
             this.ConferenceList.Name = "ConferenceList";
             this.ConferenceList.Size = new System.Drawing.Size(364, 118);
             this.ConferenceList.TabIndex = 4;
@@ -85,7 +87,7 @@
             this.MixerList.ItemHeight = 38;
             this.MixerList.Items.AddRange(new object[] {
             "Wednesday Mixer"});
-            this.MixerList.Location = new System.Drawing.Point(12, 136);
+            this.MixerList.Location = new System.Drawing.Point(53, 239);
             this.MixerList.Name = "MixerList";
             this.MixerList.Size = new System.Drawing.Size(333, 118);
             this.MixerList.TabIndex = 5;
@@ -98,20 +100,41 @@
             this.SeminarList.FormattingEnabled = true;
             this.SeminarList.ItemHeight = 38;
             this.SeminarList.Items.AddRange(new object[] {
-            "Monday Seminar",
-            "(Delayed)"});
-            this.SeminarList.Location = new System.Drawing.Point(351, 136);
+            "Monday Seminar"});
+            this.SeminarList.Location = new System.Drawing.Point(392, 239);
             this.SeminarList.Name = "SeminarList";
             this.SeminarList.Size = new System.Drawing.Size(364, 118);
             this.SeminarList.TabIndex = 6;
             this.SeminarList.SelectedIndexChanged += new System.EventHandler(this.SeminarList_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(202, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(379, 52);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Upcoming Events";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button1.Location = new System.Drawing.Point(12, 380);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 64);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // EventList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(817, 302);
+            this.ClientSize = new System.Drawing.Size(817, 459);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SeminarList);
             this.Controls.Add(this.MixerList);
             this.Controls.Add(this.ConferenceList);
@@ -119,6 +142,7 @@
             this.Name = "EventList";
             this.Text = "Events List";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -129,5 +153,7 @@
         private System.Windows.Forms.ListBox ConferenceList;
         private System.Windows.Forms.ListBox MixerList;
         private System.Windows.Forms.ListBox SeminarList;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
