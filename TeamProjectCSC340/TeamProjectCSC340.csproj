@@ -95,6 +95,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addEvent.Designer.cs">
+      <DependentUpon>addEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="editEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="addEvent.resx">
+      <DependentUpon>addEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editEventForm.resx">
       <DependentUpon>editEventForm.cs</DependentUpon>
     </EmbeddedResource>
