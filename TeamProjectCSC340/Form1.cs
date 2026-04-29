@@ -43,8 +43,6 @@ namespace TeamProjectCSC340
         {
             // When you click submit on login page
 
-            panel2.Visible = true;
-            panel1.Visible = false;
         }
     }
 }
