@@ -15,6 +15,7 @@ namespace TeamProjectCSC340
         public Form1()
         {
             InitializeComponent();
+            panel2.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,6 +32,19 @@ namespace TeamProjectCSC340
             EmployeeEventsForm employeeEventForm = new EmployeeEventsForm("delete");
             employeeEventForm.Show();
             this.Hide();
+        }
+
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // When you click submit on login page
+
+            panel2.Visible = true;
+            panel1.Visible = false;
         }
     }
 }
