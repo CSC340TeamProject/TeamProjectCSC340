@@ -1,4 +1,5 @@
-﻿using Mysqlx;
+﻿using MySql.Data.MySqlClient;
+using Mysqlx;
 using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
@@ -51,14 +52,15 @@ namespace TeamProjectCSC340
                 EmployeeEvents selectedEvent = (EmployeeEvents)eventsListBox.SelectedItem;
 
                 //open a form corresponding to the action the employee wants to complete
-                if(action == "edit")
+                if(action == "edit") //edit event
                 {
                     //open edit form
                     editEventForm edit = new editEventForm(selectedEvent);
                     edit.Show();
                     this.Hide();
-                }else if(action == "delete")
+                }else if(action == "delete") //delete event
                 {
+
                     //display a pop-up to ensure the employee wants to delete the selected event
                     DialogResult result = MessageBox.Show("Are you sure you want to delete " + selectedEvent, "Save Error", 
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -67,7 +69,8 @@ namespace TeamProjectCSC340
                     if (result == DialogResult.Yes)
                     {
                         //employee clicked yes 
-                        //delete the event - coding phase
+                        //delete the event
+                        deleteEvent(selectedEvent);
                         MessageBox.Show(selectedEvent + " has been deleted.");
                         //return to main menu
                         Form1 form = new Form1();
@@ -88,6 +91,27 @@ namespace TeamProjectCSC340
                 MessageBox.Show("Please select an event before contining.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        //function to delete meeting from database
+        public void deleteEvent(EmployeeEvents thisEvent)
+        {
+            string connStr =
+                "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string sql =
+                    "DELETE FROM bbwlcalendarevents WHERE eventId = @eventId;";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@eventId", thisEvent.eventId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
