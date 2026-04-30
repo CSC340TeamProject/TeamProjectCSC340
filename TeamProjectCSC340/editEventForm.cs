@@ -21,7 +21,6 @@ namespace TeamProjectCSC340
             this.thisEvent = thisEvent;
         }
 
-
         private void nextButton1_Click(object sender, EventArgs e)
         {
             //check if all information is entered
@@ -44,9 +43,16 @@ namespace TeamProjectCSC340
             //edit event
             updateEvent();
 
+            // Requirement R3.11: Display confirmation message
+            MessageBox.Show("Changes Confirmed");
+
+            // Requirement R3.12: Return to the existing main menu
             this.Close();
-            Form1 mainMenu = new Form1();
-            mainMenu.Show();
+            Form1 mainForm = (Form1)Application.OpenForms["Form1"];
+            if (mainForm != null)
+            {
+                mainForm.ReturnToMainMenu();
+            }
         }
 
         //function to check if all information has been entered
@@ -77,8 +83,8 @@ namespace TeamProjectCSC340
                     cmd.Parameters.AddWithValue("@endTime", newEndTime.Value);
                     cmd.Parameters.AddWithValue("@date", newDate.Value.Date);
 
-                    // existing event ID
-                    cmd.Parameters.AddWithValue("@eventID", thisEvent.eventId);
+                    // Fixed parameter capitalization to match the query exactly
+                    cmd.Parameters.AddWithValue("@eventId", thisEvent.eventId);
 
                     cmd.ExecuteNonQuery();
                 }
