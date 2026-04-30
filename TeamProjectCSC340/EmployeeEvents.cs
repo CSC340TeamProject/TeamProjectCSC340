@@ -20,6 +20,15 @@ namespace TeamProjectCSC340
         public int employeeId; //foreign key to access all of the employee's events
         public int eventId;
 
+        // This creates a custom string combining the title, a separator, and the date
+        public string displayFormat
+        {
+            get
+            {
+                return $"{date.ToShortDateString()}   |   {title}";
+            }
+        }
+
         //function to display the employee's events
         public static List<EmployeeEvents> getEvents(int employeeId)
         {

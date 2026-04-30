@@ -168,6 +168,7 @@
             this.Controls.Add(this.enterTitleLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "editEventForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calendar - Edit Event";
             this.ResumeLayout(false);
             this.PerformLayout();

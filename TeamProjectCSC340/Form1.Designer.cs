@@ -39,8 +39,9 @@
             this.loginLabel = new System.Windows.Forms.Label();
             this.addEventButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.welcomeLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.upcomingEventsListBox = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             this.editEventButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.editEventButton.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.editEventButton.Location = new System.Drawing.Point(293, 190);
+            this.editEventButton.Location = new System.Drawing.Point(537, 190);
             this.editEventButton.Margin = new System.Windows.Forms.Padding(2);
             this.editEventButton.Name = "editEventButton";
             this.editEventButton.Size = new System.Drawing.Size(162, 72);
@@ -62,7 +63,7 @@
             // 
             this.deleteEventButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.deleteEventButton.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteEventButton.Location = new System.Drawing.Point(293, 285);
+            this.deleteEventButton.Location = new System.Drawing.Point(537, 284);
             this.deleteEventButton.Margin = new System.Windows.Forms.Padding(2);
             this.deleteEventButton.Name = "deleteEventButton";
             this.deleteEventButton.Size = new System.Drawing.Size(162, 72);
@@ -148,7 +149,7 @@
             // 
             this.addEventButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.addEventButton.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.addEventButton.Location = new System.Drawing.Point(293, 97);
+            this.addEventButton.Location = new System.Drawing.Point(539, 99);
             this.addEventButton.Name = "addEventButton";
             this.addEventButton.Size = new System.Drawing.Size(162, 72);
             this.addEventButton.TabIndex = 4;
@@ -158,6 +159,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.upcomingEventsListBox);
             this.panel2.Controls.Add(this.logoutButton);
             this.panel2.Controls.Add(this.welcomeLabel);
             this.panel2.Controls.Add(this.addEventButton);
@@ -167,17 +169,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(746, 398);
             this.panel2.TabIndex = 5;
-            // 
-            // welcomeLabel
-            // 
-            this.welcomeLabel.AutoSize = true;
-            this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeLabel.Location = new System.Drawing.Point(233, 29);
-            this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(281, 47);
-            this.welcomeLabel.TabIndex = 9;
-            this.welcomeLabel.Text = "Welcome, John!";
             // 
             // logoutButton
             // 
@@ -191,6 +182,30 @@
             this.logoutButton.UseVisualStyleBackColor = false;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLabel.Location = new System.Drawing.Point(233, 29);
+            this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(281, 47);
+            this.welcomeLabel.TabIndex = 9;
+            this.welcomeLabel.Text = "Welcome, John!";
+            // 
+            // upcomingEventsListBox
+            // 
+            this.upcomingEventsListBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.upcomingEventsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.upcomingEventsListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upcomingEventsListBox.FormattingEnabled = true;
+            this.upcomingEventsListBox.ItemHeight = 21;
+            this.upcomingEventsListBox.Location = new System.Drawing.Point(33, 99);
+            this.upcomingEventsListBox.Name = "upcomingEventsListBox";
+            this.upcomingEventsListBox.Size = new System.Drawing.Size(461, 252);
+            this.upcomingEventsListBox.TabIndex = 19;
+            this.upcomingEventsListBox.SelectedIndexChanged += new System.EventHandler(this.upcomingEventsListBox_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +214,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -222,5 +238,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Button logoutButton;
+        private System.Windows.Forms.ListBox upcomingEventsListBox;
     }
 }

@@ -79,8 +79,7 @@ namespace TeamProjectCSC340
                                 // Set label to welcome the user
                                 welcomeLabel.Text = $"Welcome, {employeeName}!";
                                 // Simply toggle the panels instead of opening a new form
-                                panel1.Visible = false;
-                                panel2.Visible = true;
+                                ReturnToMainMenu();
                             }
                             else
                             {
@@ -115,6 +114,27 @@ namespace TeamProjectCSC340
             panel1.Visible = false;
             panel2.Visible = true;
             this.Show();
+
+            // 2. Fetch the real events for the logged-in user from the database
+            List<EmployeeEvents> eventsList = EmployeeEvents.getEvents(loggedInEmployeeId);
+
+            // 3. Populate the list box directly on Form1
+            if (upcomingEventsListBox != null)
+            {
+                // STEP A: Temporarily turn off the click event so it doesn't auto-trigger
+                upcomingEventsListBox.SelectedIndexChanged -= upcomingEventsListBox_SelectedIndexChanged;
+
+                // STEP B: Load your data
+                upcomingEventsListBox.DataSource = null;
+                upcomingEventsListBox.DataSource = eventsList;
+                upcomingEventsListBox.DisplayMember = "displayFormat";
+
+                // STEP C: Force the list to have NOTHING selected
+                upcomingEventsListBox.ClearSelected();
+
+                // STEP D: Turn the click event back on so it waits for the user's physical click
+                upcomingEventsListBox.SelectedIndexChanged += upcomingEventsListBox_SelectedIndexChanged;
+            }
         }
 
         // This method is for logging out and returning to the login screen.
@@ -133,6 +153,22 @@ namespace TeamProjectCSC340
 
             // Optional: Give the user feedback that they successfully logged out
             MessageBox.Show("You have successfully logged out.");
+        }
+
+        private void upcomingEventsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (upcomingEventsListBox.SelectedItem != null)
+            {
+                // Grab the real event the user clicked on
+                EmployeeEvents selectedEvent = (EmployeeEvents)upcomingEventsListBox.SelectedItem;
+
+                // Open your slim, professional custom pop-out!
+                EventDetailsForm customPopUp = new EventDetailsForm(selectedEvent);
+                customPopUp.ShowDialog(); // ShowDialog forces them to click 'OK' before clicking the calendar again
+
+                // Clear the selection so the blue highlight disappears after they close the pop-up
+                upcomingEventsListBox.ClearSelected();
+            }
         }
     }
 }
