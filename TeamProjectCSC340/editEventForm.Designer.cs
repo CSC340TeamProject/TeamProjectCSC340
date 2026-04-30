@@ -149,6 +149,7 @@
             this.returnButton.TabIndex = 17;
             this.returnButton.Text = "return";
             this.returnButton.UseVisualStyleBackColor = false;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // editEventForm
             // 

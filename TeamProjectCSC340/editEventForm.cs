@@ -90,5 +90,14 @@ namespace TeamProjectCSC340
                 }
             }
         }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            // 1. Close or hide the current screen
+            this.Close();
+
+            // 2. Find the hidden Form1 and make it visible again
+            Application.OpenForms["Form1"].Show();
+        }
     }
 }
