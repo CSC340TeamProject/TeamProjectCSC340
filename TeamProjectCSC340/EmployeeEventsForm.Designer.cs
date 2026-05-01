@@ -53,7 +53,7 @@
             this.eventsListBox.FormattingEnabled = true;
             this.eventsListBox.ItemHeight = 20;
             this.eventsListBox.Location = new System.Drawing.Point(89, 67);
-            this.eventsListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.eventsListBox.Margin = new System.Windows.Forms.Padding(2);
             this.eventsListBox.Name = "eventsListBox";
             this.eventsListBox.Size = new System.Drawing.Size(418, 224);
             this.eventsListBox.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(233, 318);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 37);
             this.button1.TabIndex = 2;
@@ -72,15 +72,10 @@
             // 
             // backButton
             // 
-            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backButton.Location = new System.Drawing.Point(11, 11);
-            this.backButton.Margin = new System.Windows.Forms.Padding(2);
+            this.backButton.Location = new System.Drawing.Point(23, 14);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(78, 33);
-            this.backButton.TabIndex = 3;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            this.backButton.Size = new System.Drawing.Size(72, 22);
+            this.backButton.TabIndex = 0;
             // 
             // EmployeeEventsForm
             // 
@@ -92,7 +87,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.eventsListBox);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeEventsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calendar - Events";

@@ -41,12 +41,12 @@ namespace TeamProjectCSC340
             }
 
             //edit event
-            updateEvent();
+            editEvent();
 
             // Requirement R3.11: Display confirmation message
             MessageBox.Show("Changes Confirmed");
 
-            // Requirement R3.12: Return to the existing main menu
+            //return to main menu
             this.Close();
             Form1 mainForm = (Form1)Application.OpenForms["Form1"];
             if (mainForm != null)
@@ -54,6 +54,7 @@ namespace TeamProjectCSC340
                 mainForm.ReturnToMainMenu();
             }
         }
+
 
         //function to check if all information has been entered
         public bool isAllInfoEntered()
@@ -68,7 +69,7 @@ namespace TeamProjectCSC340
         }
 
         //function to update event
-        public void updateEvent()
+        public void editEvent()
         {
             TimeSpan parsedStartTime = DateTime.Parse(newStartTime.Text).TimeOfDay;
             TimeSpan parsedEndTime = DateTime.Parse(newEndTime.Text).TimeOfDay;
@@ -87,31 +88,23 @@ namespace TeamProjectCSC340
             {
                 conn.Open();
 
-                // FIX 3: Added 'duration = @duration' into the middle of this SQL string
-                string sql = "UPDATE bbwlcalendarevents SET title = @title, startTime = @startTime, endTime = @endTime, duration = @duration, date = @date WHERE eventId = @eventId";
+                string sql =
+                    "UPDATE bbwlcalendarevents SET title = @title, startTime = @startTime, endTime = @endTime, " +
+                    "duration = TIMEDIFF(@endTime, @startTime), date = @date WHERE eventId = @eventId";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@title", newTitleTextBox.Text);
-                    cmd.Parameters.AddWithValue("@startTime", parsedStartTime);
-                    cmd.Parameters.AddWithValue("@endTime", parsedEndTime);
-                    cmd.Parameters.AddWithValue("@duration", eventDuration);
+                    cmd.Parameters.AddWithValue("@startTime", newStartTime.Value);
+                    cmd.Parameters.AddWithValue("@endTime", newEndTime.Value);
                     cmd.Parameters.AddWithValue("@date", newDate.Value.Date);
 
+                    // Fixed parameter capitalization to match the query exactly
                     cmd.Parameters.AddWithValue("@eventId", thisEvent.eventId);
 
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
-
-        private void returnButton_Click(object sender, EventArgs e)
-        {
-            // 1. Close or hide the current screen
-            this.Close();
-
-            // 2. Find the hidden Form1 and make it visible again
-            Application.OpenForms["Form1"].Show();
         }
     }
 }
