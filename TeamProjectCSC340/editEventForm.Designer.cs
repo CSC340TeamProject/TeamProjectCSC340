@@ -35,9 +35,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.newDate = new System.Windows.Forms.DateTimePicker();
             this.nextButton1 = new System.Windows.Forms.Button();
-            this.newStartTime = new System.Windows.Forms.DateTimePicker();
-            this.newEndTime = new System.Windows.Forms.DateTimePicker();
             this.returnButton = new System.Windows.Forms.Button();
+            this.newStartTime = new System.Windows.Forms.ComboBox();
+            this.newEndTime = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // enterTitleLabel
@@ -118,27 +118,6 @@
             this.nextButton1.UseVisualStyleBackColor = false;
             this.nextButton1.Click += new System.EventHandler(this.nextButton1_Click);
             // 
-            // newStartTime
-            // 
-            this.newStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.newStartTime.Location = new System.Drawing.Point(255, 133);
-            this.newStartTime.Margin = new System.Windows.Forms.Padding(2);
-            this.newStartTime.Name = "newStartTime";
-            this.newStartTime.Size = new System.Drawing.Size(228, 23);
-            this.newStartTime.TabIndex = 10;
-            // 
-            // newEndTime
-            // 
-            this.newEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.newEndTime.Location = new System.Drawing.Point(255, 197);
-            this.newEndTime.Margin = new System.Windows.Forms.Padding(2);
-            this.newEndTime.Name = "newEndTime";
-            this.newEndTime.Size = new System.Drawing.Size(228, 23);
-            this.newEndTime.TabIndex = 11;
-            this.newEndTime.Value = new System.DateTime(2026, 2, 27, 10, 23, 0, 0);
-            // 
             // returnButton
             // 
             this.returnButton.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -151,15 +130,107 @@
             this.returnButton.UseVisualStyleBackColor = false;
             this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
+            // newStartTime
+            // 
+            this.newStartTime.BackColor = System.Drawing.SystemColors.Window;
+            this.newStartTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.newStartTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newStartTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newStartTime.FormattingEnabled = true;
+            this.newStartTime.Items.AddRange(new object[] {
+            "06:00 AM",
+            "06:30 AM ",
+            "07:00 AM ",
+            "07:30 AM ",
+            "08:00 AM ",
+            "08:30 AM ",
+            "09:00 AM ",
+            "09:30 AM ",
+            "10:00 AM ",
+            "10:30 AM ",
+            "11:00 AM ",
+            "11:30 AM ",
+            "12:00 PM ",
+            "12:30 PM ",
+            "01:00 PM ",
+            "01:30 PM ",
+            "02:00 PM ",
+            "02:30 PM ",
+            "03:00 PM ",
+            "03:30 PM ",
+            "04:00 PM ",
+            "04:30 PM ",
+            "05:00 PM ",
+            "05:30 PM ",
+            "06:00 PM ",
+            "06:30 PM ",
+            "07:00 PM ",
+            "07:30 PM ",
+            "08:00 PM ",
+            "08:30 PM ",
+            "09:00 PM ",
+            "09:30 PM ",
+            "10:00 PM"});
+            this.newStartTime.Location = new System.Drawing.Point(255, 131);
+            this.newStartTime.Name = "newStartTime";
+            this.newStartTime.Size = new System.Drawing.Size(228, 28);
+            this.newStartTime.TabIndex = 18;
+            // 
+            // newEndTime
+            // 
+            this.newEndTime.BackColor = System.Drawing.SystemColors.Window;
+            this.newEndTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.newEndTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newEndTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newEndTime.FormattingEnabled = true;
+            this.newEndTime.Items.AddRange(new object[] {
+            "06:00 AM",
+            "06:30 AM ",
+            "07:00 AM ",
+            "07:30 AM ",
+            "08:00 AM ",
+            "08:30 AM ",
+            "09:00 AM ",
+            "09:30 AM ",
+            "10:00 AM ",
+            "10:30 AM ",
+            "11:00 AM ",
+            "11:30 AM ",
+            "12:00 PM ",
+            "12:30 PM ",
+            "01:00 PM ",
+            "01:30 PM ",
+            "02:00 PM ",
+            "02:30 PM ",
+            "03:00 PM ",
+            "03:30 PM ",
+            "04:00 PM ",
+            "04:30 PM ",
+            "05:00 PM ",
+            "05:30 PM ",
+            "06:00 PM ",
+            "06:30 PM ",
+            "07:00 PM ",
+            "07:30 PM ",
+            "08:00 PM ",
+            "08:30 PM ",
+            "09:00 PM ",
+            "09:30 PM ",
+            "10:00 PM"});
+            this.newEndTime.Location = new System.Drawing.Point(255, 195);
+            this.newEndTime.Name = "newEndTime";
+            this.newEndTime.Size = new System.Drawing.Size(228, 28);
+            this.newEndTime.TabIndex = 19;
+            // 
             // editEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(600, 366);
-            this.Controls.Add(this.returnButton);
             this.Controls.Add(this.newEndTime);
             this.Controls.Add(this.newStartTime);
+            this.Controls.Add(this.returnButton);
             this.Controls.Add(this.nextButton1);
             this.Controls.Add(this.newDate);
             this.Controls.Add(this.label3);
@@ -185,8 +256,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker newDate;
         private System.Windows.Forms.Button nextButton1;
-        private System.Windows.Forms.DateTimePicker newStartTime;
-        private System.Windows.Forms.DateTimePicker newEndTime;
         private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.ComboBox newStartTime;
+        private System.Windows.Forms.ComboBox newEndTime;
     }
 }

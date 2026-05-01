@@ -56,9 +56,9 @@ namespace TeamProjectCSC340
             string userEmail = emailTextBox.Text;
             string userPassword = passwordTextBox.Text;
 
-            // Include firstName in the SELECT so we can read it.
+            // Include firstName and isManager in the SELECT so we can read them.
             string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
-            string query = "SELECT employeeId, firstName, isManager FROM bbwlcalenderemployees WHERE email = @email AND password = @password";
+            string query = "SELECT employeeId, firstName, lastName, isManager FROM bbwlcalenderemployees WHERE email = @email AND password = @password";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -75,20 +75,32 @@ namespace TeamProjectCSC340
                             if (reader.HasRows)
                             {
                                 reader.Read();
-                                // Store the employeeId globally here if you need it for the next panel!
+                                // Store the employeeId globally here
                                 loggedInEmployeeId = reader.GetInt32("employeeId");
-                                // Fix: firstName is a string, so use string type
                                 string employeeName = reader.GetString("firstName");
-                                //Pulling manager status for addEvent usage
-                                isManager = reader.GetInt32("isManager");
+                                string lastName = reader.GetString("lastName");
+
+                                // Pulling manager status
+                                int isManager = reader.GetInt32("isManager");
+
+                                // NEW: Show or hide the schedule meeting button based on their permissions
+                                if (isManager == 1)
+                                {
+                                    addMeetingBtn.Visible = true; // They are a manager
+                                }
+                                else
+                                {
+                                    addMeetingBtn.Visible = false; // They are a standard employee
+                                }
 
                                 // Set label to welcome the user
-                                welcomeLabel.Text = $"Welcome, {employeeName}!";
+                                welcomeLabel.Text = $"{employeeName} {lastName}.";
                                 // Simply toggle the panels instead of opening a new form
                                 ReturnToMainMenu();
                             }
                             else
                             {
+                                // Requirement 1.4: Display an "Authentication Failed" message [1]
                                 MessageBox.Show("Authentication Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
@@ -99,7 +111,6 @@ namespace TeamProjectCSC340
                     MessageBox.Show("Database Connection Error: " + ex.Message);
                 }
             }
-
         }
 
         // This method is for opening the add event form.
@@ -175,6 +186,49 @@ namespace TeamProjectCSC340
                 // Clear the selection so the blue highlight disappears after they close the pop-up
                 upcomingEventsListBox.ClearSelected();
             }
+        }
+
+        public void CheckManagerPermissions()
+        {
+            string connStr = "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
+
+            try
+            {
+                // Check the isManager column for the specific logged-in user
+                string sql = "SELECT isManager FROM bbwlcalenderemployees WHERE employeeId = @employeeId";
+
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@employeeId", loggedInEmployeeId);
+                        object result = cmd.ExecuteScalar();
+
+                        // If the database returns 1, they are a manager. Show the button!
+                        if (result != null && Convert.ToInt32(result) == 1)
+                        {
+                            addMeetingBtn.Visible = true;
+                        }
+                        else
+                        {
+                            // Otherwise, they are a standard employee. Hide the button!
+                            addMeetingBtn.Visible = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error verifying account permissions: " + ex.Message);
+            }
+        }
+
+        private void addMeetingBtn_Click(object sender, EventArgs e)
+        {
+            // Since this button is only visible to Managers, we just open the tool directly!
+            ScheduleMeetingForm meetingForm = new ScheduleMeetingForm();
+            meetingForm.Show();
         }
     }
 }

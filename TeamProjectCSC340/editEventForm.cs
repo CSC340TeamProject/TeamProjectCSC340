@@ -34,7 +34,7 @@ namespace TeamProjectCSC340
             }
 
             //check if endTime is after startTime
-            if (newEndTime.Value.TimeOfDay <= newStartTime.Value.TimeOfDay)
+            if (DateTime.Parse(newEndTime.Text).TimeOfDay <= (DateTime.Parse(newStartTime.Text).TimeOfDay))
             {
                 MessageBox.Show("End time must be after start time.");
                 return;
@@ -58,32 +58,46 @@ namespace TeamProjectCSC340
         //function to check if all information has been entered
         public bool isAllInfoEntered()
         {
-            if (string.IsNullOrWhiteSpace(newTitleTextBox.Text))
+            if (string.IsNullOrWhiteSpace(newTitleTextBox.Text) ||
+        string.IsNullOrWhiteSpace(newStartTime.Text) ||
+        string.IsNullOrWhiteSpace(newEndTime.Text))
+            {
                 return false;
+            }
             return true;
         }
 
         //function to update event
         public void updateEvent()
         {
-            string connStr =
-                "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
+            TimeSpan parsedStartTime = DateTime.Parse(newStartTime.Text).TimeOfDay;
+            TimeSpan parsedEndTime = DateTime.Parse(newEndTime.Text).TimeOfDay;
+            TimeSpan eventDuration = parsedEndTime - parsedStartTime;
+
+            // Safety check: Don't allow negative durations (End time before start time)
+            if (eventDuration.TotalMinutes <= 0)
+            {
+                MessageBox.Show("The End Time must be later than the Start Time.", "Time Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string connStr = "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
-                string sql =
-                    "UPDATE bbwlcalendarevents SET title = @title, startTime = @startTime, endTime = @endTime, date = @date WHERE eventId = @eventId";
+                // FIX 3: Added 'duration = @duration' into the middle of this SQL string
+                string sql = "UPDATE bbwlcalendarevents SET title = @title, startTime = @startTime, endTime = @endTime, duration = @duration, date = @date WHERE eventId = @eventId";
 
                 using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@title", newTitleTextBox.Text);
-                    cmd.Parameters.AddWithValue("@startTime", newStartTime.Value);
-                    cmd.Parameters.AddWithValue("@endTime", newEndTime.Value);
+                    cmd.Parameters.AddWithValue("@startTime", parsedStartTime);
+                    cmd.Parameters.AddWithValue("@endTime", parsedEndTime);
+                    cmd.Parameters.AddWithValue("@duration", eventDuration);
                     cmd.Parameters.AddWithValue("@date", newDate.Value.Date);
 
-                    // Fixed parameter capitalization to match the query exactly
                     cmd.Parameters.AddWithValue("@eventId", thisEvent.eventId);
 
                     cmd.ExecuteNonQuery();

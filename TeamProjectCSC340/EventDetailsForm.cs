@@ -20,8 +20,9 @@ namespace TeamProjectCSC340
             eventTitleLabel.Text = selectedEvent.title;
 
             // 2. Combine the rest of the information into your single details label
+            // FIX: Converted the TimeSpan to a 12-hour AM/PM format
             eventDetailsLabel.Text = $"Date: {selectedEvent.date.ToShortDateString()}\n" +
-                                     $"Time: {selectedEvent.startTime}\n" +
+                                     $"Time: {DateTime.Today.Add(selectedEvent.startTime).ToString("h:mm tt")}\n" +
                                      $"Duration: {selectedEvent.duration} mins";
         }
 
