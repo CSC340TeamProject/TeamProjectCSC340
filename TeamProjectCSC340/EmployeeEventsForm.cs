@@ -53,6 +53,7 @@ namespace TeamProjectCSC340
             {
                 EmployeeEvents selectedEvent = (EmployeeEvents)eventsListBox.SelectedItem;
 
+                //open a form corresponding to the action the employee wants to complete
                 if (action == "edit")
                 {
                     editEventForm edit = new editEventForm(selectedEvent);
@@ -61,34 +62,20 @@ namespace TeamProjectCSC340
                 }
                 else if (action == "delete")
                 {
-                    // Confirmation pop-up before deleting
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete " + selectedEvent.title + "?", "Confirm Delete",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    //display a pop-up to ensure the employee wants to delete the selected event
+                    DialogResult result = MessageBox.Show(
+                        "Are you sure you want to delete " + selectedEvent,
+                        "Save Error",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
                     {
-                        // 3. Deletes the selected event from the database
-                        string connectionString = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
-                        using (MySqlConnection conn = new MySqlConnection(connectionString))
-                        {
-                            try
-                            {
-                                conn.Open();
-                                string deleteQuery = "DELETE FROM bbwlcalendarevents WHERE eventId = @eventId";
-                                using (MySqlCommand cmd = new MySqlCommand(deleteQuery, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@eventId", selectedEvent.eventId);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                MessageBox.Show(selectedEvent.title + " has been deleted.");
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Database Error: " + ex.Message);
-                            }
-                        }
+                        //employee clicked yes 
+                        deleteEvent(selectedEvent);
+                        MessageBox.Show(selectedEvent + " has been deleted.");
 
-                        // 4. Returns to the main menu after successful deletion
+                        //returns to the main menu after successful deletion
                         this.Close();
                         Form1 mainForm = (Form1)Application.OpenForms["Form1"];
                         if (mainForm != null)
@@ -96,21 +83,45 @@ namespace TeamProjectCSC340
                             mainForm.ReturnToMainMenu();
                         }
                     }
+                    else
+                    {
+                        //Employee clicked no
+                        return;
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Please select an event before continuing.", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //display an error
+                MessageBox.Show(
+                    "Please select an event before contining.",
+                    "Save Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        //function to delete an event
+        public void deleteEvent(EmployeeEvents selectedEvent)
         {
-            // 1. Close or hide the current screen
-            this.Close();
+            string connStr =
+                "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
 
-            // 2. Find the hidden Form1 and make it visible again
-            Application.OpenForms["Form1"].Show();
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string sql =
+                    "DELETE FROM bbwlcalendarevents WHERE eventId = @eventId;";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@eventId", selectedEvent.eventId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
+
     }
 }

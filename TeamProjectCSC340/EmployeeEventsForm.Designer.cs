@@ -70,18 +70,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // backButton
-            // 
-            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backButton.Location = new System.Drawing.Point(11, 11);
-            this.backButton.Margin = new System.Windows.Forms.Padding(2);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(78, 33);
-            this.backButton.TabIndex = 3;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // EmployeeEventsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
