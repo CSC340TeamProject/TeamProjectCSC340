@@ -21,7 +21,6 @@ namespace TeamProjectCSC340
             this.thisEvent = thisEvent;
         }
 
-
         private void nextButton1_Click(object sender, EventArgs e)
         {
             //check if all information is entered
@@ -44,9 +43,14 @@ namespace TeamProjectCSC340
             //edit event
             updateEvent();
 
-            this.Close();
-            Form1 mainMenu = new Form1();
-            mainMenu.Show();
+            // Requirement R3.11: Display confirmation message
+            MessageBox.Show("Changes Confirmed");
+
+                //return to main menu
+                Form1 form = new Form1();
+                form.Show();
+                this.Hide();
+            }
         }
 
         //function to check if all information has been entered
@@ -55,33 +59,6 @@ namespace TeamProjectCSC340
             if (string.IsNullOrWhiteSpace(newTitleTextBox.Text))
                 return false;
             return true;
-        }
-
-        //function to update event
-        public void updateEvent()
-        {
-            string connStr =
-                "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
-
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                conn.Open();
-
-                string sql =
-                    "UPDATE bbwlcalendarevents SET title = @title, startTime = @startTime, endTime = @endTime, " +
-                    "duration = TIMEDIFF(@endTime, @startTime), date = @date WHERE eventId = @eventId";
-
-                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                {
-                    cmd.Parameters.AddWithValue("@title", newTitleTextBox.Text);
-                    cmd.Parameters.AddWithValue("@startTime", newStartTime.Value.TimeOfDay);
-                    cmd.Parameters.AddWithValue("@endTime", newEndTime.Value.TimeOfDay);
-                    cmd.Parameters.AddWithValue("@date", newDate.Value.Date);
-                    cmd.Parameters.AddWithValue("@eventId", thisEvent.eventId);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
         }
     }
 }

@@ -37,6 +37,7 @@
             this.nextButton1 = new System.Windows.Forms.Button();
             this.newStartTime = new System.Windows.Forms.DateTimePicker();
             this.newEndTime = new System.Windows.Forms.DateTimePicker();
+            this.returnButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // enterTitleLabel
@@ -91,8 +92,8 @@
             // newDate
             // 
             this.newDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newDate.Location = new System.Drawing.Point(340, 268);
-            this.newDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.newDate.Location = new System.Drawing.Point(255, 263);
+            this.newDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.newDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.newDate.MinDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
             this.newDate.Name = "newDate";
@@ -104,8 +105,8 @@
             // 
             this.nextButton1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.nextButton1.Font = new System.Drawing.Font("Copperplate Gothic Bold", 15F);
-            this.nextButton1.Location = new System.Drawing.Point(245, 390);
-            this.nextButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nextButton1.Location = new System.Drawing.Point(184, 317);
+            this.nextButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nextButton1.Name = "nextButton1";
             this.nextButton1.Size = new System.Drawing.Size(299, 48);
             this.nextButton1.TabIndex = 9;
@@ -117,8 +118,8 @@
             // 
             this.newStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.newStartTime.Location = new System.Drawing.Point(340, 113);
-            this.newStartTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.newStartTime.Location = new System.Drawing.Point(255, 133);
+            this.newStartTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.newStartTime.Name = "newStartTime";
             this.newStartTime.Size = new System.Drawing.Size(303, 26);
             this.newStartTime.TabIndex = 10;
@@ -127,19 +128,31 @@
             // 
             this.newEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.newEndTime.Location = new System.Drawing.Point(340, 193);
-            this.newEndTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.newEndTime.Location = new System.Drawing.Point(255, 197);
+            this.newEndTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.newEndTime.Name = "newEndTime";
             this.newEndTime.Size = new System.Drawing.Size(303, 26);
             this.newEndTime.TabIndex = 11;
             this.newEndTime.Value = new System.DateTime(2026, 2, 27, 10, 23, 0, 0);
+            // 
+            // returnButton
+            // 
+            this.returnButton.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.returnButton.Font = new System.Drawing.Font("Copperplate Gothic Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnButton.Location = new System.Drawing.Point(12, 12);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(115, 50);
+            this.returnButton.TabIndex = 17;
+            this.returnButton.Text = "return";
+            this.returnButton.UseVisualStyleBackColor = false;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // editEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.newEndTime);
             this.Controls.Add(this.newStartTime);
             this.Controls.Add(this.nextButton1);
@@ -149,8 +162,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newTitleTextBox);
             this.Controls.Add(this.enterTitleLabel);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "editEventForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calendar - Edit Event";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,6 +182,5 @@
         private System.Windows.Forms.Button nextButton1;
         private System.Windows.Forms.DateTimePicker newStartTime;
         private System.Windows.Forms.DateTimePicker newEndTime;
-        private System.Windows.Forms.DateTimePicker newDuration;
     }
 }
