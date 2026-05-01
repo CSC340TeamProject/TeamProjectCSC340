@@ -37,7 +37,6 @@
             this.nextButton1 = new System.Windows.Forms.Button();
             this.newStartTime = new System.Windows.Forms.DateTimePicker();
             this.newEndTime = new System.Windows.Forms.DateTimePicker();
-            this.returnButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // enterTitleLabel
@@ -134,18 +133,6 @@
             this.newEndTime.Size = new System.Drawing.Size(303, 26);
             this.newEndTime.TabIndex = 11;
             this.newEndTime.Value = new System.DateTime(2026, 2, 27, 10, 23, 0, 0);
-            // 
-            // returnButton
-            // 
-            this.returnButton.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.returnButton.Font = new System.Drawing.Font("Copperplate Gothic Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnButton.Location = new System.Drawing.Point(12, 12);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(115, 50);
-            this.returnButton.TabIndex = 17;
-            this.returnButton.Text = "return";
-            this.returnButton.UseVisualStyleBackColor = false;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // editEventForm
             // 

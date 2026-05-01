@@ -41,17 +41,20 @@ namespace TeamProjectCSC340
             }
 
             //edit event
-            updateEvent();
+            editEvent();
 
             // Requirement R3.11: Display confirmation message
             MessageBox.Show("Changes Confirmed");
 
-                //return to main menu
-                Form1 form = new Form1();
-                form.Show();
-                this.Hide();
+            //return to main menu
+            this.Close();
+            Form1 mainForm = (Form1)Application.OpenForms["Form1"];
+            if (mainForm != null)
+            {
+                mainForm.ReturnToMainMenu();
             }
         }
+
 
         //function to check if all information has been entered
         public bool isAllInfoEntered()
@@ -59,6 +62,33 @@ namespace TeamProjectCSC340
             if (string.IsNullOrWhiteSpace(newTitleTextBox.Text))
                 return false;
             return true;
+        }
+
+        //function to update event
+        public void editEvent()
+        {
+            string connStr =
+                "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string sql =
+                    "UPDATE bbwlcalendarevents SET title = @title, startTime = @startTime, endTime = @endTime, " +
+                    "duration = TIMEDIFF(@endTime, @startTime), date = @date WHERE eventId = @eventId";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@title", newTitleTextBox.Text);
+                    cmd.Parameters.AddWithValue("@startTime", newStartTime.Value.TimeOfDay);
+                    cmd.Parameters.AddWithValue("@endTime", newEndTime.Value.TimeOfDay);
+                    cmd.Parameters.AddWithValue("@date", newDate.Value.Date);
+                    cmd.Parameters.AddWithValue("@eventId", thisEvent.eventId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

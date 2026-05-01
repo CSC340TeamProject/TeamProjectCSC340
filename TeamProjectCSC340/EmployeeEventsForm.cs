@@ -54,34 +54,28 @@ namespace TeamProjectCSC340
                 EmployeeEvents selectedEvent = (EmployeeEvents)eventsListBox.SelectedItem;
 
                 //open a form corresponding to the action the employee wants to complete
-                if(action == "edit") //edit event
+                if (action == "edit")
                 {
                     editEventForm edit = new editEventForm(selectedEvent);
                     edit.Show();
                     this.Hide();
-                }else if(action == "delete")
+                }
+                else if (action == "delete")
                 {
                     //display a pop-up to ensure the employee wants to delete the selected event
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete " + selectedEvent, "Save Error", 
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show(
+                        "Are you sure you want to delete " + selectedEvent,
+                        "Save Error",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
                     {
                         //employee clicked yes 
-                        //delete the event - coding phase
+                        deleteEvent(selectedEvent);
                         MessageBox.Show(selectedEvent + " has been deleted.");
-                        //return to main menu
-                        Form1 form = new Form1();
-                        form.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        //Employee clicked no
-                        return;
-                    }
 
-                        // 4. Returns to the main menu after successful deletion
+                        //returns to the main menu after successful deletion
                         this.Close();
                         Form1 mainForm = (Form1)Application.OpenForms["Form1"];
                         if (mainForm != null)
@@ -89,14 +83,45 @@ namespace TeamProjectCSC340
                             mainForm.ReturnToMainMenu();
                         }
                     }
+                    else
+                    {
+                        //Employee clicked no
+                        return;
+                    }
                 }
             }
             else
             {
                 //display an error
-                MessageBox.Show("Please select an event before contining.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Please select an event before contining.",
+                    "Save Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-
         }
+
+        //function to delete an event
+        public void deleteEvent(EmployeeEvents selectedEvent)
+        {
+            string connStr =
+                "server=csitmariadb.eku.edu; user=student; database=csc340_db; port=3306; password=Maroon@21?;";
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string sql =
+                    "DELETE FROM bbwlcalendarevents WHERE eventId = @eventId;";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@eventId", selectedEvent.eventId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
