@@ -68,11 +68,16 @@ namespace TeamProjectCSC340
                     }
 
                     // 3. REQUIREMENT R2.2.3: No conflict exists, commit the event to the database
-                    string insertQuery = @"INSERT INTO bbwlcalendarevents (employeeId, title, startTime, endTime, duration, date) 
-                                   VALUES (@employeeId, @title, @startTime, @endTime, @duration, @date)";
+                    string insertQuery = @"INSERT INTO bbwlcalendarevents (employeeId, isMeeting, title, startTime, endTime, duration, date) 
+                                   VALUES (@employeeId, @isMeeting, @title, @startTime, @endTime, @duration, @date)";
 
                     using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn))
                     {
+                        if(ScheduleMeetingCheckBox.Checked) {
+                            insertCmd.Parameters.AddWithValue("@isMeeting", 1);
+                        } else {
+                            insertCmd.Parameters.AddWithValue("@isMeeting", 0);
+                        }
                         insertCmd.Parameters.AddWithValue("@employeeId", Form1.loggedInEmployeeId);
                         insertCmd.Parameters.AddWithValue("@title", eventTitle);
                         insertCmd.Parameters.AddWithValue("@startTime", startTime);
@@ -107,6 +112,19 @@ namespace TeamProjectCSC340
 
             // 2. Find the hidden Form1 and make it visible again
             Application.OpenForms["Form1"].Show();
+        }
+
+        private void ManagerLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ScheduleMeetingCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(Form1.isManager == 0) {
+                ScheduleMeetingCheckBox.Enabled = false;
+                ScheduleMeetingCheckBox.Checked = false;
+            }
         }
     }
 }

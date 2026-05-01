@@ -16,6 +16,10 @@ namespace TeamProjectCSC340
 
         // Global variable to store the logged-in employee's ID for use in other forms
         public static int loggedInEmployeeId;
+        //Enables scheduling meeting
+        public static int isManager;
+        //Pulls meetings for all users
+        //public static int isMeeting;
 
         public Form1()
         {
@@ -75,6 +79,8 @@ namespace TeamProjectCSC340
                                 loggedInEmployeeId = reader.GetInt32("employeeId");
                                 // Fix: firstName is a string, so use string type
                                 string employeeName = reader.GetString("firstName");
+                                //Pulling manager status for addEvent usage
+                                isManager = reader.GetInt32("isManager");
 
                                 // Set label to welcome the user
                                 welcomeLabel.Text = $"Welcome, {employeeName}!";

@@ -19,6 +19,7 @@ namespace TeamProjectCSC340
         public TimeSpan duration => endTime - startTime; //holds the duration of the meeting 
         public int employeeId; //foreign key to access all of the employee's events
         public int eventId;
+        public int isMeeting;
 
         // This creates a custom string combining the title, a separator, and the date
         public string displayFormat
@@ -44,7 +45,7 @@ namespace TeamProjectCSC340
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
                 //query to return the employee's event details
-                string sql = "SELECT * FROM bbwlcalendarevents WHERE employeeId = @thisemployeeId";
+                string sql = "SELECT * FROM bbwlcalendarevents WHERE employeeId = @thisemployeeId OR isMeeting = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@thisemployeeId", employeeId);
                 MySqlDataReader myReader = cmd.ExecuteReader();
