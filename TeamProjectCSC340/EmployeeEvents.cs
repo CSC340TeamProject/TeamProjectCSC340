@@ -45,7 +45,7 @@ namespace TeamProjectCSC340
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
                 //query to return the employee's event details
-                string sql = "SELECT * FROM bbwlcalendarevents WHERE employeeId = @thisemployeeId OR isMeeting = 1";
+                string sql = "SELECT * FROM bbwlcalendarevents WHERE employeeId = @thisemployeeId";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@thisemployeeId", employeeId);
                 MySqlDataReader myReader = cmd.ExecuteReader();
